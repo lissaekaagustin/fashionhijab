@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Hijab & Fashion</title>
+
+  <!-- Font Google (boleh ganti kalau mau) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f6f1e8;        /* ivory */
+      --card: #ffffff;
+      --accent: #d4b89f;    /* beige */
+      --accent-dark: #b49577;
+      --text-main: #3f2f25;
+      --text-soft: #7a6a5c;
+      --radius: 22px;
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #fdfaf5, #f3e9dd);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 18px 10px 40px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 430px; /* biar pas di HP */
+      background: rgba(255,255,255,0.4);
+      border-radius: 30px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      padding: 18px 16px 26px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.9);
+      box-shadow: var(--shadow-soft);
+      margin: 0 auto 12px;
+      background: #e5d4c2;
+    }
+
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* isi foto brand / produk utama */
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin: 12px 4px 6px;
+    }
+
+    .link-list {
+      margin-top: 4px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      margin: 6px 0;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(212,184,159,0.5);
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .link-btn span.subtitle {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .link-btn:hover,
+    .link-btn:active {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.14);
+      background: #fffaf5;
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .link-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .arrow {
+      font-size: 18px;
+      opacity: 0.5;
+    }
+
+    /* Produk */
+    .products {
+      margin-top: 14px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 12px 12px 14px;
+      margin-top: 10px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(212,184,159,0.45);
+    }
+
+    .product-img {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: #e8ded2;
+    }
+
+    .product-img img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 230px;
+    }
+
+    .product-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .product-detail {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .product-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .product-links a {
+      flex: 1;
+      text-align: center;
+      font-size: 0.76rem;
+      padding: 7px 4px;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid var(--accent-dark);
+      color: var(--accent-dark);
+      background: #fffaf5;
+      font-weight: 500;
+      transition: 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .product-links a:hover,
+    .product-links a:active {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .product-links a.whatsapp {
+      border-color: #25d366;
+      color: #1a9f4e;
+      background: #f3fff9;
+    }
+    .product-links a.whatsapp:hover {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      margin-top: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- BAGIAN ATAS / BRAND -->
+    <header class="hero">
+      <div class="hero-avatar">
+        <!-- Ganti src dengan foto brand kamu -->
+        <img src="1.jpg">text=Brand+Hijab" alt="Brand Hijab">
+      </div>
+      <h1 class="brand-name">JANR.HIJABANDFASHION</h1>
+      <p class="tagline">
+        Menciptakan style yang chic and modest. Fashion & hijab, your style your way ✨
+      </p>
+    </header>
+
+    <!-- LINK UTAMA SEPERTI LINKTREE -->
+    <div class="link-section">
+      <p class="section-title">Semua Link Toko</p>
+      <div class="link-list">
+
+        <!-- Website utama (kalau punya katalog sendiri) -->
+        <a href="#produk" class="link-btn">
+          <div class="link-left">
+            <div class="link-icon">🛍️</div>
+            <div>
+              <span>Produk Hijab & Fashion</span>
+              <span class="subtitle">Lihat semua koleksi di bawah</span>
+            </div>
+          </div>
+          <span class="arrow">›</span>
+        </a>
+
+        <!-- Shopee -->
+        <a href="https://shopee.co.id/" target="_blank" class="link-btn">
+          <div class="link-left">
+            <div class="link-icon">🧡</div>
+            <div>
+              <span>Shopee Official Store</span>
+              <span class="subtitle">@namatoko_sizi</span>
+            </div>
+          </div>
+          <span class="arrow">›</span>
+        </a>
+
+        <!-- TikTok Shop -->
+        <a href="https://www.tiktok.com/@janr_hijabandfashion?/" target="_blank" class="link-btn">
+          <div class="link-left">
+            <div class="link-icon">🎵</div>
+            <div>
+              <span>TikTok Shop</span>
+              <span class="subtitle">Belanja sambil nonton konten</span>
+            </div>
+          </div>
+          <span class="arrow">›</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20tanya%20koleksi%20hijab%20dan%20fashion%20terbaru%20dong" target="_blank" class="link-btn">
+          <div class="link-left">
+            <div class="link-icon">💬</div>
+            <div>
+              <span>WhatsApp Order</span>
+              <span class="subtitle">Chat admin langsung via WA</span>
+            </div>
+          </div>
+          <span class="arrow">›</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- DAFTAR PRODUK -->
+    <section id="produk" class="products">
+      <p class="section-title">Koleksi Terbaru</p>
+
+      <!-- PRODUK 1 -->
+      <article class="product-card">
+        <div class="product-img">
+          <!-- Ganti src dengan foto produk -->
+          <img src="https://via.placeholder.com/450x300.png?text=Hijab+Pashmina+Beige" alt="Hijab Pashmina">
+        </div>
+        <div class="product-info">
+          <span class="product-name">Hijab Pashmina Premium Beige</span>
+          <span class="product-price">Rp89.000</span>
+        </div>
+        <p class="product-detail">
+          Bahan ceruty babydoll premium, jatuh, tidak nerawang.  
+          Pilihan warna: beige, latte, milk, mocca.
+        </p>
+        <div class="product-links">
+          <!-- WA order produk khusus -->
+          <a class="whatsapp" target="_blank"
+             href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20order%20Hijab%20Pashmina%20Premium%20Beige%20Rp89.000">
+            Order Via WA
+          </a>
+          <a target="_blank" href="https://shopee.co.id/">
+            Order Via Shopee
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@janr_hijabandfashion?/">
+            Order Via Tiktok
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUK 2 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/450x300.png?text=Square+Hijab+Ivory" alt="Square Hijab">
+        </div>
+        <div class="product-info">
+          <span class="product-name">Square Hijab Classic Ivory</span>
+          <span class="product-price">Rp69.000</span>
+        </div>
+        <p class="product-detail">
+          Hijab segi empat daily wear, nyaman dipakai seharian,  
+          finishing jahit tepi rapi, anti kusut.
+        </p>
+        <div class="product-links">
+          <a class="whatsapp" target="_blank"
+             href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20order%20Square%20Hijab%20Classic%20Ivory%20Rp69.000">
+            Order Via WA
+          </a>
+          <a target="_blank" href="https://shopee.co.id/">
+           Order Via Shopee
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@janr_hijabandfashion?/">
+            Order Via Tiktok
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUK 3 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/450x300.png?text=Set+Tunik+%26+Pants" alt="Set Tunik">
+        </div>
+        <div class="product-info">
+          <span class="product-name">Set Tunik & Pants Ivory</span>
+          <span class="product-price">Rp189.000</span>
+        </div>
+        <p class="product-detail">
+          Set tunik longgar + celana, bahan adem dan jatuh.  
+          Cocok untuk kuliah, kerja, atau hangout.
+        </p>
+        <div class="product-links">
+          <a class="whatsapp" target="_blank"
+             href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20order%20Set%20Tunik%20%26%20Pants%20Ivory%20Rp189.000">
+            Order Via WA
+          </a>
+          <a target="_blank" href="https://shopee.co.id/">
+            Order Via Shopee
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@janr_hijabandfashion?/">
+            Order Via Tiktok
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUK 4 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/450x300.png?text=Inner+Rajut+Nude" alt="Inner Rajut">
+        </div>
+        <div class="product-info">
+          <span class="product-name">Inner Rajut Nude</span>
+          <span class="product-price">Rp39.000</span>
+        </div>
+        <p class="product-detail">
+          Inner rajut anti pusing, cocok dipakai di bawah pashmina  
+          ataupun segi empat. Satu ukuran, elastis.
+        </p>
+        <div class="product-links">
+          <a class="whatsapp" target="_blank"
+             href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20order%20Inner%20Rajut%20Nude%20Rp39.000">
+            Order Via WA
+          </a>
+          <a target="_blank" href="https://shopee.co.id/">
+            Order Via Shopee
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@janr_hijabandfashion?/">
+            Order Via Tiktok
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUK 5 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="https://via.placeholder.com/450x300.png?text=Hijab+Instan+Cream" alt="Hijab Instan">
+        </div>
+        <div class="product-info">
+          <span class="product-name">Hijab Instan Cream Daily</span>
+          <span class="product-price">Rp79.000</span>
+        </div>
+        <p class="product-detail">
+          Tinggal pakai, langsung rapi. Bahan jersey premium,  
+          tidak mudah melar dan menyerap keringat.
+        </p>
+        <div class="product-links">
+          <a class="whatsapp" target="_blank"
+             href="https://wa.me/088279802959?text=Halo%20Kak,%20saya%20mau%20order%20Hijab%20Instan%20Cream%20Daily%20Rp79.000">
+            Order Via WA
+          </a>
+          <a target="_blank" href="https://shopee.co.id/">
+            Order Via Shopee
+          </a>
+          <a target="_blank" href="https://www.tiktok.com/@janr_hijabandfashion?/">
+            Order Via Tiktok
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <p class="footer-note">
+      ©Janr.hijabandfashion. All Always Fashionable.
+    </p>
+  </div>
+</body>
+</html>
